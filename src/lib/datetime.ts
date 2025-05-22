@@ -102,7 +102,7 @@ export function toRelativeDateString(date: Date | string, locale: string) {
         return t`Updated ${dayOfWeek}`;
     }
   }
-  const dateString = localizedDate(date, locale, locale === 'ko');
+  const dateString = localizedDate(date, locale, (locale === 'ko' || locale === 'pl'));
   return t`Updated ${dateString}`;
 }
 
@@ -115,6 +115,7 @@ export function localizedDate(
     switch (locale) {
       case 'fr':
       case 'it':
+      case 'pl':
         return format(date, 'd MMMM yyyy', LOCALE_MAP[locale]);
       case 'ko':
         return format(date, 'y년 M월 d일', LOCALE_MAP[locale]);
